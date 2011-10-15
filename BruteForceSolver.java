@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.TreeSet;
 
+// This one is horribly inefficient
 public class BruteForceSolver {
     
     public static void main(String[] args) {
