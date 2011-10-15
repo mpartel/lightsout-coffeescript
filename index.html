@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>tilegame</title>
+  <script type="text/javascript" src="http://jashkenas.github.com/coffee-script/extras/coffee-script.js"></script>
+  <script type="text/coffeescript" src="tilegame.coffeescript"></script>
+  <style>
+    #boardselect {
+      text-align: center;
+    }
+    #game table {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+    }
+    #game td {
+      width: 50px;
+      height: 50px;
+      border: 1px solid black;
+    }
+    #game td.off {
+      background-color: #555;
+    }
+    #game td.on {
+      background-color: #eef;
+    }
+    #victory {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="boardselect">
+    <label for="width">Width:</label>
+    <select id="width">
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected="selected">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <label for="height">Height:</label>
+    <select id="height">
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected="selected">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+  </div>
+  
+  <div id="game">
+  </div>
+  
+  <div id="victory" class="hidden">
+    <img src="smiley.png" alt="victory!" />
+  </div>
+</body>
+</html>

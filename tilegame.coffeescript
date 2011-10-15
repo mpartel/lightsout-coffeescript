@@ -1,0 +1,82 @@
+
+class Game
+  width = 3
+  height = 3
+  
+  gameRootElement = document.getElementById('game')
+  
+  constructor: () ->
+    makeBoard()
+  
+  reset: (newWidth, newHeight) ->
+    width = newWidth
+    height = newHeight
+    while (gameRootElement.hasChildNodes())
+      gameRootElement.removeChild(gameRootElement.lastChild);
+    makeBoard()
+    checkForVictory()
+  
+  makeBoard = () ->
+    table = document.createElement('table')
+    gameRootElement.appendChild(table)
+    tableBody = document.createElement('tbody')
+    table.appendChild(tableBody)
+    for row in [0...height]
+      tr = document.createElement('tr')
+      tableBody.appendChild(tr)
+      for col in [0...width]
+        td = document.createElement('td')
+        td.id = "tile_" + row + "_" + col
+        td.className = 'off'
+        bindClick td, row, col
+        tr.appendChild(td)
+  
+  bindClick = (td, row, col) ->
+    td.onclick = () =>
+      switchAt(row, col)
+      checkForVictory()
+  
+  switchAt = (row, col) ->
+    flip row,   col
+    flip row+1, col
+    flip row,   col+1
+    flip row-1, col
+    flip row,   col-1
+  
+  flip = (row, col) ->
+    td = getTd(row, col)
+    if td?
+      td.className = if td.className == 'off' then 'on' else 'off'
+  
+  getTd = (row, col) ->
+    document.getElementById('tile_' + row + '_' + col)
+  
+  checkForVictory = () ->
+    document.getElementById('victory').className = if done() then 'visible' else 'hidden'
+  
+  done = () ->
+    for row in [0...height]
+      for col in [0...width]
+        td = getTd(row, col)
+        return false if td.className != 'on'
+    true
+
+
+game = new Game()
+
+
+setUpWidthAndHeightSelects = () ->
+  widthSelect = document.getElementById('width')
+  heightSelect = document.getElementById('height')
+  
+  valueOfSelect = (select) ->
+    new Number(select.options[select.selectedIndex].value)
+  
+  applySelection = () ->
+    game.reset(valueOfSelect(widthSelect), valueOfSelect(heightSelect))
+  
+  widthSelect.onchange = applySelection
+  heightSelect.onchange = applySelection
+  applySelection()
+
+setUpWidthAndHeightSelects()
