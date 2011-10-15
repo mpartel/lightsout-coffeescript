@@ -1,4 +1,4 @@
-This is [LightsOut](http://en.wikipedia.org/wiki/Lights_Out_(game)) implemented in [CoffeeScript](http://jashkenas.github.com/coffee-script/).
+This is [Lights Out](http://en.wikipedia.org/wiki/Lights_Out_%28game%29) implemented in [CoffeeScript](http://jashkenas.github.com/coffee-script/).
 
 Play [here](http://mpartel.github.com/lightsout-coffeescript/).
 
