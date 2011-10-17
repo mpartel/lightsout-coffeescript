@@ -27,7 +27,7 @@ class Game
       for col in [0...width]
         td = document.createElement('td')
         td.id = "tile_" + row + "_" + col
-        td.className = 'off'
+        td.className = 'on'
         bindClick td, row, col
         tr.appendChild(td)
   
@@ -58,7 +58,7 @@ class Game
     for row in [0...height]
       for col in [0...width]
         td = getTd(row, col)
-        return false if td.className != 'on'
+        return false if td.className != 'off'
     true
 
 
